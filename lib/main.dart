@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './presentation/screens/my_home_page.dart';
-import './presentation/screens/binary_page.dart';
+import 'navigation_menu.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int myIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,35 +24,10 @@ class _MyAppState extends State<MyApp> {
         ),
         useMaterial3: true,
       ),
-      initialRoute: '/binary',
-      routes: <String, WidgetBuilder>{
-        '/HomePage': (context) => const MyHomePage(),
-        '/binary': (context) => const ToDecimal(),
+      initialRoute: '/navigationMenu',
+      routes: {
+        '/navigationMenu': (context) => NavigationMenu(), 
       },
-      home: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.onetwothree),
-              label: 'Decimal',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.outlet_outlined),
-              label: 'Binary Converter',
-            ),
-          ],
-          onTap: (int index) {
-            setState(() {
-              myIndex = index;
-            });
-            if (index == 0) {
-              Navigator.pushNamed(context, '/HomePage');
-            } else if (index == 1) {
-              Navigator.pushNamed(context, '/binary');
-            }
-          },
-        ),
-      ),
     );
   }
 }

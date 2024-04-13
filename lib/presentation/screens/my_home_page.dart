@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage();
@@ -12,6 +13,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  bool status1 = false;
+  bool isSwitchOn = false;
 
   void _incrementCounter() {
     setState(() {
@@ -58,6 +61,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Icon(Icons.add),
                 ),
               ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            FlutterSwitch(
+              value: status1,
+              onToggle: (val) {
+                setState(() {
+                  status1 = val;
+                });
+              },
             ),
           ],
         ),
